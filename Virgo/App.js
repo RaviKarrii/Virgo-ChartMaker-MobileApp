@@ -4,7 +4,7 @@ import Chart from './chart/chart';
 import DatePicker from 'react-native-datepicker';
 import TimePicker from "react-native-24h-timepicker";
 import {createStackNavigator,createAppContainer} from 'react-navigation';
-import MapView from 'react-native-maps';
+import MapView,{Marker} from 'react-native-maps';
 
 export default class Test extends Component {
   
@@ -17,7 +17,10 @@ export default class Test extends Component {
       date_out: '2016-05-01',
       Name: 'Name',
       time: "HH:MM",
-      
+      x: {
+        latitude : 14,
+        longitude : 98
+      }
 
     };
   }
@@ -48,8 +51,8 @@ export default class Test extends Component {
     return (
       <View style={styles.container}>
         <Text style={{height:'10%'}}>></Text>
-        <Text style={styles.header}>VIRGO</Text>
-        <View style={{height:'5%'}}></View>
+        {/* <Text style={styles.header}>VIRGO</Text>
+        <View style={{height:'5%'}}></View> */}
         <View style={styles.inputcontainer}>
           <TextInput name={this.state.Name}
             placeholder="Name"
@@ -90,7 +93,12 @@ export default class Test extends Component {
           />
         </View>
 
-        <MapView style={{flex: 1}} showsUserLocation/>
+        <MapView style={{flex: 1}} showsUserLocation>
+        <Marker draggable
+    coordinate={this.state.x}
+    onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
+  />
+        </MapView>
         <View style={styles.inputContainer}>
           <TouchableOpacity style={styles.saveButton}>
             <Text style={styles.saveButtonText}>Generate</Text>
@@ -109,6 +117,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
+    padding : 10
 
   },
   inputContainer: {
