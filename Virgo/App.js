@@ -18,8 +18,8 @@ export default class Test extends Component {
       Name: 'Name',
       time: "HH:MM",
       x: {
-        latitude : 14,
-        longitude : 98
+        latitude : 16.98,
+        longitude : 82.24
       }
 
     };
@@ -43,14 +43,14 @@ export default class Test extends Component {
   render() {
     // declare this outside of render
   var region = {
-    latitude: 37.78825,
-    longitude: -122.4324,
+    latitude: 16.98,
+    longitude: 82.24,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
     return (
       <View style={styles.container}>
-        <Text style={{height:'10%'}}>></Text>
+        <Text style={{height:'10%'}}></Text>
         {/* <Text style={styles.header}>VIRGO</Text>
         <View style={{height:'5%'}}></View> */}
         <View style={styles.inputcontainer}>
@@ -60,6 +60,8 @@ export default class Test extends Component {
             style={styles.textInput}
           />
         </View>
+        <Text style={{height:'2%'}}></Text>
+        <Text style={{textAlign:'center'}}>Birth Detils</Text>
         <View style={styles.rowContainer}>
           <DatePicker
             confirmBtnText="Confirm"
@@ -93,7 +95,7 @@ export default class Test extends Component {
           />
         </View>
 
-        <MapView style={{flex: 1}} showsUserLocation>
+        <MapView style={{flex: 1}} initialRegion={region}>
         <Marker draggable
     coordinate={this.state.x}
     onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
