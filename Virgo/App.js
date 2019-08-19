@@ -3,9 +3,11 @@ import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-nativ
 import Chart from './chart/chart';
 import DatePicker from 'react-native-datepicker';
 import TimePicker from "react-native-24h-timepicker";
+import {createStackNavigator,createAppContainer} from 'react-navigation';
+import MapView from 'react-native-maps';
 
 export default class Test extends Component {
-
+  
   constructor(props) {
     super(props)
 
@@ -15,10 +17,11 @@ export default class Test extends Component {
       date_out: '2016-05-01',
       Name: 'Name',
       time: "HH:MM",
+      
 
     };
   }
-
+  
   onCancel() {
     this.TimePicker.close();
   }
@@ -33,11 +36,20 @@ export default class Test extends Component {
       project: e.target.value
     });
   }
-
+  
   render() {
+    // declare this outside of render
+  var region = {
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  };
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Generate Horoscope</Text>
+        <Text style={{height:'10%'}}>></Text>
+        <Text style={styles.header}>VIRGO</Text>
+        <View style={{height:'5%'}}></View>
         <View style={styles.inputcontainer}>
           <TextInput name={this.state.Name}
             placeholder="Name"
@@ -78,11 +90,13 @@ export default class Test extends Component {
           />
         </View>
 
+        <MapView style={{flex: 1}} showsUserLocation/>
         <View style={styles.inputContainer}>
           <TouchableOpacity style={styles.saveButton}>
             <Text style={styles.saveButtonText}>Generate</Text>
           </TouchableOpacity>
         </View>
+        
       </View>
 
     )
