@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity , AsyncStorage  } from 'react-native';
-import chart from "./chart/chart"
+//import {swe_calc_ut} from ".././chart/chart"
+import swisseph,{swe_julday} from 'react-native-swisseph';
 
 export default class addname extends Component {
   
@@ -8,12 +9,13 @@ export default class addname extends Component {
     super(props)
 
     this.state = {
-
+        message:""
     };
   }
   componentWillMount(){
     this.displaydata()
 }
+  
   
   displaydata = async () =>{
       try{
@@ -26,11 +28,12 @@ export default class addname extends Component {
         
       }
   }
+  
   render() {
   
     return (
       <View style={styles.container}>
-        <Text onPress = {this.displaydata}>Home</Text>
+        <Text onPress = {this.displaydata}>{swe_julday(2019,9,16,12,2)}</Text>
       </View>
 
     )

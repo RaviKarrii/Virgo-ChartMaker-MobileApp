@@ -1,30 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import swisseph from 'react-native-swisseph';
 
-export default class Chart extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
 
-        }
+export function ravi() 
+      {
+        return "Ravi";
       }
-      render() {
-        return (
-            <View style={styles.container}>
-            <Chart/>
-            <Text>From Chart</Text>
-          </View>
-        )
-        
-        
-      }
-      
-  }
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
